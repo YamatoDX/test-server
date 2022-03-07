@@ -1,5 +1,6 @@
 require("dotenv").config();
 const express = require("express");
+const mongoose = require("mongoose");
 const cors = require("cors");
 const res = require("express/lib/response");
 const app = express();
@@ -13,6 +14,11 @@ app.get("/", () => {
   });
 });
 
-app.listen(process.env.PORT, () => {
-  console.log(`Listening to PORT ${process.env.PORT}`);
+app.listen(process.env.PORT, async () => {
+  try {
+    await mongoose.connect(process.env.MONGO_URL);
+    console.log(`Listening to PORT ${process.env.PORT}`);
+  } catch (err) {
+    console.error("Error during connection", err);
+  }
 });
