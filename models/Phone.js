@@ -4,6 +4,7 @@ const phoneSchema = new mongoose.Schema({
   modelName: {
     type: String,
     required: true,
+    unique: true,
   },
   battery: {
     type: Number,

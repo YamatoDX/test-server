@@ -4,6 +4,7 @@ const profileSchema = new mongoose.Schema({
   fullName: {
     type: String,
     required: true,
+    unique: true,
   },
   age: {
     type: Number,
